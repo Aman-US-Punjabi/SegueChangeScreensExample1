@@ -1,5 +1,5 @@
 //
-//  MusicListVC.swift
+//  PlaySongVC.swift
 //  SegueChangeScreensExample1
 //
 //  Created by Gary Singh on 12/28/16.
@@ -8,21 +8,26 @@
 
 import UIKit
 
-class MusicListVC: UIViewController {
+class PlaySongVC: UIViewController {
 
-    @IBAction func backBtnPressed(_ sender: Any) {
-        dismiss(animated: true, completion: nil )
-    }
+    @IBOutlet weak var SongTitleLabel: UILabel!
     
-    @IBAction func load3rdScreenPressed(_ sender: Any) {
-        let songTitle = "Testing data passed in Segue"
-        performSegue(withIdentifier: "PlaySongVC", sender: songTitle)
+    private var _selectedSong:String!
+    
+    var selectedSong: String {
+        get {
+            return _selectedSong
+        } set {
+            _selectedSong =  newValue
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        SongTitleLabel.text = _selectedSong
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,21 +36,14 @@ class MusicListVC: UIViewController {
     }
     
 
-    
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        
-        if let destination = segue.destination as? PlaySongVC {
-            
-            if let song = sender as? String {
-                destination.selectedSong = song
-            }
-        }
     }
-    
+    */
 
 }
